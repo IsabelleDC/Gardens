@@ -1,0 +1,84 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+    <link href="{% static 'css/pigeon.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
+
+{% block javascript %}
+{% endblock javascript%}
+
+{% block content %}
+    <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="example">
+                    <h2>PIGEONS, organize your personal news</h2>  <hr>
+                    <h4>Choose the news that most interest you! Make your own newspaper</h4>
+                    <button class="btn"><a href="{% url 'login' %}">Login</a></button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="static/img/machine.jpg" class=" img-responsive" height="350px" width="420px">
+                <div class="wrapper">
+                    <div class="caption post-content">
+                        <h3>Discover</h3>
+                        <p>news everyday!</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="static/img/time.jpg" class=" img-responsive" height="350px" width="420px">
+                <div class="wrapper">
+                    <div class="caption post-content">
+                        <h3>Gain</h3>
+                        <p>time!</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="static/img/organize.jpeg" class=" img-responsive" height="350px" width="420px">
+                <div class="wrapper">
+                    <div class="caption post-content">
+                        <h3>Enjoy</h3>
+                        <p> your organization!</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="col-sm-12">
+        <h2>They love us</h2>
+        <hr>
+        <div class="col-sm-4" id='logo' >
+            <h5 style="font-style: italic;"> "If you're still starting your morning with a zigzag through a standard set of Websites, you're wasting time and energy. Pigeons is what you need!"</h5>
+            <img src="static/img/NY.jpeg" class=" img-responsive " height="30px" width="30px">
+        </div>
+
+        <div class="col-sm-4" id='logo' >
+            <h5 style="font-style: italic;">"Great idea! Highly recommended"</h5>
+            <img src="static/img/tech.jpeg" class=" img-responsive "style="position:relative" height="30px" width="30px">
+        </div>
+        <div class="col-sm-4" id='logo' >
+            <h5 style="font-style: italic;">"The best website for collecting art news!"</h5>
+            <img id='logo' src="static/img/art.jpeg" class=" img-responsive " height="60px" width="40px">
+        </div>
+    </div>
+
+    </body>
+
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+    <link href="{% static 'css/home.css' %}" type="text/css" rel="stylesheet">
+{% endblock stylesheet %}
+
+{% block javascript %}
+    <script type="text/javascript" src="http://www.google.com/jsapi?"></script>
+    <script type="text/javascript">google.load("feeds", "1") //Load Google Ajax Feed API (version 1)
+    </script>
+    {#    <script src="{% static 'js/read.js' %}" type="text/javascript"></script>#}
+
+    {#JAVASCRIPT TEST#}
+    <script type="text/javascript">
+        var feedcontainer=document.getElementById("feeddiv");
+        var feedurl="http://feeds.feedburner.com/TechCrunch/";
+
+        var feedlimit=5;
+        var rssoutput="<b>Techcrunch:</b><br /><ul>";
+
+        function rssfeedsetup(){
+            var feedpointer=new google.feeds.Feed(feedurl); //Google Feed API method
+
+            feedpointer.setNumEntries(feedlimit); //Google Feed API method
+            feedpointer.load(displayfeed); //Google Feed API method
+        }
+
+        function displayfeed(result){
+            if (!result.error){
+                var thefeeds=result.feed.entries;
+                for (var i=0; i<thefeeds.length; i++)
+                    rssoutput+="<li><a href='" + thefeeds[i].link + "'>" + thefeeds[i].title + "</a></li>"
+                rssoutput+="</ul>";
+                feedcontainer.innerHTML=rssoutput
+            }
+            else
+                alert("Error fetching feeds!")
+        }
+
+        window.onload=function(){
+            rssfeedsetup()}
+    </script>
+
+{% endblock javascript%}
+
+{% block content %}
+    <div class="photo">
+        <h2>Hello {{ user.username }}, welcome back!</h2>
+        {#Later, add more informations, like category/visitor#}
+    </div>
+
+    <hr>
+
+    <div id="test" class="rssFeed"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <h4>This are the latest news</h4>
+                <div id="feeddiv"></div>
+            </div>
+
+            {#with javascript external#}
+            {#<div class="list-group" id="newRssFeed">#}
+            {#<button class="btn btn-danger" id="allMyRss">My Urls</button>#}
+
+            <hr>
+
+            <div class="col-sm-3">
+                <div><button id="addRss" class="btn btn-info">Add a rss</button></div>
+
+                <hr>
+
+                <a  class="list-group-item active">Tech</a>
+                <a href="#" class="list-group-item">Art</a>
+                <a href="#" class="list-group-item">World</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
