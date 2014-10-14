@@ -21,6 +21,7 @@ def register(request):
 
 
 def profile(request):
+    # request.user is a Visitor object, you don't need to go and get it from the database
     name = request.user.username
     visitor = Visitor.objects.get(username=name)
     if not visitor.profile:
@@ -35,6 +36,7 @@ def profile(request):
 # javascript files
 
 def view_rss(request):
+    # no camel case!
     feedUrl = request.user.feeds.all()
     allUrls = []
     for url in feedUrl:
